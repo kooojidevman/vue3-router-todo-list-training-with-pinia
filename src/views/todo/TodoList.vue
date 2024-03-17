@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import { useTodosStore } from '../../stores/todo';
 import type { Todo } from '../../interfaces'
-import { inject, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
-const todoListInit = inject('todoList') as Map<number, Todo>
-const todoList = ref(todoListInit)
+const todosStore = useTodosStore()
+if (todosStore.todoList.size === 0) {
+  todosStore.initTodoList()
+}
+
+const todoList = computed((): Map<number, Todo> =>{
+  return todosStore.todoList;
+})
 let searchQuery = ref('')
 
 const onClickButtonToEdit = (todoId: number): void => {
@@ -16,7 +23,8 @@ const onClickButtonToDelete = (todoId: number): void => {
 }
 const onInputSearch = (): void => {
   if (!searchQuery.value) {
-    todoList.value = todoListInit
+    // TODO: 動くかわからない
+    return
   }
 
   const filterdTodoList = new Map<number, Todo>()
@@ -26,7 +34,8 @@ const onInputSearch = (): void => {
     }
   })
 
-  todoList.value = filterdTodoList
+  // TODO: どうするべきか調べる
+  // todoList.value = filterdTodoList
 }
 </script>
 

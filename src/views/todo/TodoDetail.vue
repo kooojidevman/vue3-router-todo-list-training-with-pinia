@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import type { Todo } from '../../interfaces'
+import { useTodosStore } from '../../stores/todo';
 
 interface Props {
   id: number
 }
 
 const props = defineProps<Props>()
-const todoList = inject('todoList') as Map<number, Todo>
+const todosStore = useTodosStore()
 const todo = computed((): Todo => {
-  return todoList.get(props.id) as Todo
+  return todosStore.todoList.get(props.id) as Todo
 })
 </script>
 

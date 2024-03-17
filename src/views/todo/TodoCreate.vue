@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { Todo } from '../../interfaces'
-import { inject, reactive } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useTodosStore } from '../../stores/todo';
 
 const router = useRouter()
-const todoList = inject('todoList') as Map<number, Todo>
-const maxId = Math.max(...Array.from(todoList.keys()))
+const todosStore = useTodosStore()
+const todoList = todosStore.todoList;
+const keys = Array.from(todoList.keys());
+const maxId = keys[keys.length - 1] as number;
 const newTodo = reactive({
   id: maxId ? maxId + 1 : 1,
   title: '',
@@ -13,8 +15,7 @@ const newTodo = reactive({
 })
 
 const onCreate = (): void => {
-  console.log(newTodo)
-  todoList.set(newTodo.id, newTodo)
+  todosStore.createTodo(newTodo)
   router.push({ name: 'TodoList' })
 }
 </script>
