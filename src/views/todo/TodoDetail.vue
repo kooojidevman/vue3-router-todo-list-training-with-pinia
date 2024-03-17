@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import type { Todo } from '../../interfaces'
-import { useTodosStore } from '../../stores/todo';
+import { useTodosStore } from '../../stores/todo'
 
 interface Props {
   id: number

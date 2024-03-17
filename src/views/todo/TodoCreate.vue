@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { useTodosStore } from '../../stores/todo';
+import { useTodosStore } from '../../stores/todo'
 
 const router = useRouter()
 const todosStore = useTodosStore()
-const todoList = todosStore.todoList;
-const keys = Array.from(todoList.keys());
-const maxId = keys[keys.length - 1] as number;
+const todoList = todosStore.todoList
+const keys = Array.from(todoList.keys())
+const maxId = keys[keys.length - 1] as number
 const newTodo = reactive({
   id: maxId ? maxId + 1 : 1,
   title: '',

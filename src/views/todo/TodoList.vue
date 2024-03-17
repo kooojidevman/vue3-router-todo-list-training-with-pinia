@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTodosStore } from '../../stores/todo';
+import { useTodosStore } from '../../stores/todo'
 import type { Todo } from '../../interfaces'
 import { computed, inject, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
@@ -10,8 +10,8 @@ if (todosStore.todoList.size === 0) {
   todosStore.initTodoList()
 }
 
-const todoList = computed((): Map<number, Todo> =>{
-  return todosStore.todoList;
+const todoList = computed((): Map<number, Todo> => {
+  return todosStore.todoList
 })
 let searchQuery = ref('')
 
