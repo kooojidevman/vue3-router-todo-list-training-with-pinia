@@ -16,7 +16,7 @@ export const useTodosStore = defineStore('todos', {
   },
   actions: {
     initTodoList(): void {
-      let todoList = new Map<number, Todo>()
+      const todoList = new Map<number, Todo>()
       todoList.set(1, { id: 1, title: 'タイトル1', content: '本文1' })
       todoList.set(2, { id: 2, title: 'タイトル2', content: '本文2' })
       todoList.set(3, { id: 3, title: 'タイトル3', content: '本文3' })

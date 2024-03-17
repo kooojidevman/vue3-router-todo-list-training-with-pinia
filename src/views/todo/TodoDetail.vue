@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed } from 'vue'
 import type { Todo } from '../../interfaces'
 import { useTodosStore } from '../../stores/todo'
 

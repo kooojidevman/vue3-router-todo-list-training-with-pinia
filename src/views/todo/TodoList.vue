@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTodosStore } from '../../stores/todo'
 import type { Todo } from '../../interfaces'
-import { computed, inject, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
